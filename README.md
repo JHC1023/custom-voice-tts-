@@ -99,6 +99,38 @@ python main.py
 
 ---
 
+## 🗣️ 나만의 목소리로 TTS 모델 학습 및 사용하기
+
+이 프로젝트는 `voice_recorder` 디렉토리에 포함된 스크립트를 통해 자신만의 목소리를 녹음하고, 그 데이터로 새로운 TTS 모델을 학습시키는 전체 과정을 지원합니다.
+
+### 1단계: 목소리 데이터셋 생성
+
+1.  **필요 라이브러리 설치:**
+    먼저, 목소리 녹음에 필요한 라이브러리를 설치합니다.
+    ```bash
+    pip install -r voice_recorder/requirements.txt
+    ```
+
+2.  **녹음용 문장 준비:**
+    `voice_recorder` 폴더에 있는 `prompts.example.csv` 파일을 `recording_prompts.csv` 라는 이름으로 복사합니다. 그 후, `recording_prompts.csv` 파일을 열어 직접 녹음하고 싶은 자신만의 문장으로 수정하거나 추가합니다.
+
+3.  **녹음 스크립트 실행:**
+    다음 명령어로 녹음 스크립트를 실행합니다.
+    ```bash
+    python voice_recorder/create_dataset.py
+    ```
+    - 스크립트가 실행되면 `recording_prompts.csv`에 있는 문장들이 순서대로 화면에 나타납니다.
+    - 안내에 따라 문장을 읽고 녹음을 진행하세요.
+    - 녹음이 완료되면, 모델 학습에 필요한 `metadata.csv`와 `ljs_audio_text_val_filelist.txt` 파일이 `voice_recorder` 폴더 내에 자동으로 생성되고, 음성 파일은 `voice_recorder/recordings` 폴더에 저장됩니다.
+
+### 2단계: 커스텀 모델 학습
+
+- 1단계에서 생성된 데이터셋(`metadata.csv` 등)을 사용하여 `train_glowtts.py`와 `train_hifigan.py` 스크립트로 자신만의 TTS 모델을 학습시킵니다.
+- `data/filelists/` 경로 아래에 1단계에서 생성된 파일들을 올바르게 배치하거나, 훈련 스크립트 내의 파일 경로를 수정해야 할 수 있습니다.
+
+
+---
+
 ## 🧠 모델 학습
 
 `train_glowtts.py`와 `train_hifigan.py` 스크립트를 사용하여 자신만의 커스텀 모델을 학습할 수 있습니다. 이 스크립트들은 본래 Google Colab 환경에 맞게 설계되었으며, 학습 환경 설정 및 과정에 필요한 명령어들을 포함하고 있습니다.

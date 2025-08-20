@@ -135,3 +135,13 @@ TTS.egg-info/
 # External libraries/submodules
 TTS/
 transliteration/
+
+# Conversation logs
+conversation_log.md
+
+# Voice Recorder specific ignores
+voice_recorder/recordings/
+voice_recorder/metadata.csv
+voice_recorder/recording_progress.txt
+voice_recorder/recording_prompts.csv
+tts_output.wav
