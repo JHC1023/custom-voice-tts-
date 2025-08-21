@@ -138,6 +138,8 @@ transliteration/
 
 # Conversation logs
 conversation_log.md
+README copy.md
+(example)README.md
 
 # Voice Recorder specific ignores
 voice_recorder/recordings/
