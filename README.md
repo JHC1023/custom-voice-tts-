@@ -61,50 +61,6 @@
 
 ## 🏗️ System Architecture
 
-### 전체 시스템 구조
-
-```mermaid
-graph TB
-    subgraph "Main Application"
-        A[KoreanVoiceTTSTranslator]
-    end
-    
-    subgraph "Core Modules"
-        B[AudioHandler<br/>음성 입출력]
-        C[TTSModelLoader<br/>TTS 모델 관리]
-        D[EnglishToKoreanPronunciation<br/>발음 변환]
-        E[GoogleTrans<br/>번역 엔진]
-    end
-    
-    subgraph "Processing Flow - Translation Mode"
-        F[Korean Speech Input] --> G[Speech Recognition]
-        G --> H[Korean → English Translation]
-        H --> I[English → Hangul Pronunciation]
-        I --> J[TTS Synthesis]
-        J --> K[Audio Output]
-    end
-    
-    subgraph "Processing Flow - Direct Mode"
-        L[Korean Speech Input] --> M[Speech Recognition]
-        M --> N[Direct TTS Synthesis]
-        N --> O[Audio Output]
-    end
-    
-    A --> B
-    A --> C
-    A --> D
-    A --> E
-    
-    B -.-> F
-    B -.-> L
-    E -.-> H
-    D -.-> I
-    C -.-> J
-    C -.-> N
-    B -.-> K
-    B -.-> O
-```
-
 ### 📁 Project Structure
 
 ```
